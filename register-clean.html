@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registeration Portal </title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0b0f1a;
+      --panel: #111827;
+      --border: #1e2d45;
+      --accent: #5b8dee;
+      --gold: #e8c56d;
+      --text: #e8ecf4;
+      --muted: #5a6a82;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      padding: 1.5rem;
+    }
+
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 15% 20%, rgba(91, 141, 238, .13) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 50% at 85% 80%, rgba(232, 197, 109, .09) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+
+    .card {
+      width: 100%;
+      max-width: 450px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 2.4rem;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, .55);
+      animation: rise .6s ease both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #0b0f1a;
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+    }
+
+
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      margin-bottom: .3rem;
+    }
+
+
+    h1 em {
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: normal;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 1.8rem;
+    }
+
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+    }
+
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input,
+    select {
+      width: 100%;
+      background: rgba(255, 255, 255, .04);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .93rem;
+      padding: .78rem 1rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder {
+      color: #3a4a60;
+    }
+
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%235a6a82' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .9rem center;
+      background-size: 15px;
+      padding-right: 2.4rem;
+      cursor: pointer;
+    }
+
+    select option {
+      background: var(--panel);
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(91, 141, 238, .13);
+    }
+
+
+
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .check-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      padding: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .check-row label {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .check-row label a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+
+    .btn {
+      width: 100%;
+      padding: .9rem;
+      background: linear-gradient(135deg, var(--accent), #3a7bdc);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .97rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(91, 141, 238, .32);
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(91, 141, 238, .42);
+    }
+
+
+
+    .footer-text {
+      text-align: center;
+      margin-top: 1.3rem;
+      font-size: .86rem;
+      color: var(--muted);
+    }
+
+    .footer-text a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+
+
+    @media (max-width: 460px) {
+      .row-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 1.8rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="card">
+
+    <div class="brand">
+      <div class="brand-icon">NEC</div>
+      <span class="brand-name">Static Web Development</span>
+    </div>
+
+    <h1>Create your <em>account</em></h1>
+    <p class="subtitle">Join thousands of users already on board.</p>
+
+    <!-- Form -->
+    <form action="#" method="post">
+
+      <div class="row-2">
+        <div class="field">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" placeholder="John" required />
+        </div>
+        <div class="field">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" placeholder="Doe" required />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="john@example.com" required />
+      </div>
+
+      <!-- Phone -->
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" placeholder="+91 99999 99999" />
+      </div>
+
+      <!-- Country -->
+      <div class="field">
+        <label for="country">Country</label>
+        <select id="country" required>
+          <option value="" disabled selected>Select country</option>
+          <option>India</option>
+          <option>United States</option>
+          <option>United Kingdom</option>
+          <option>Canada</option>
+          <option>Australia</option>
+          <option>Germany</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- Password -->
+      <div class="field">
+        <label for="pwd">Password</label>
+        <input type="password" id="pwd" placeholder="Min. 8 characters" required />
+      </div>
+
+      <div class="field">
+        <label for="cpwd">Confirm Password</label>
+        <input type="password" id="cpwd" placeholder="Repeat password" required />
+      </div>
+      <div class="check-row">
+        <input type="checkbox" id="terms" required />
+        <label for="terms">
+          I agree to the <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn">Create Account →</button>
+
+    </form>
+
+    <p class="footer-text">
+      Already have an account? <a href="#">Sign in</a>
+    </p>
+
+  </div>
+
+</body>
+
+</html>
